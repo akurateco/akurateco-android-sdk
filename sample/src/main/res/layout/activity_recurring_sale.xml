@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:padding="48dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Transactions:"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
+
+        <Button
+            android:id="@+id/btn_load_recurring_sale"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOAD RECURRING SALE" />
+
+        <Button
+            android:id="@+id/btn_load_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOAD ALL" />
+
+        <Spinner
+            android:id="@+id/spinner_transactions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Selected Transaction:"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
+
+        <TextView
+            android:id="@+id/txt_selected_transaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="..."
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Recurring:"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
+
+        <EditText
+            android:id="@+id/etxt_recurring_first_trans_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Recurring First Trans ID" />
+
+        <EditText
+            android:id="@+id/etxt_recurring_token"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Recurring Token" />
+
+        <Button
+            android:id="@+id/btn_randomize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="RANDOMIZE" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Order:"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
+
+        <EditText
+            android:id="@+id/etxt_order_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Order ID" />
+
+        <EditText
+            android:id="@+id/etxt_order_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Order Amount" />
+
+        <EditText
+            android:id="@+id/etxt_order_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Order Description" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Request:"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_auth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="R. AUTH" />
+
+            <Button
+                android:id="@+id/btn_sale"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_weight="1"
+                android:text="R. SALE" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Response:"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/txt_response"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="..."
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textIsSelectable="true" />
+
+    </LinearLayout>
+
+</ScrollView>

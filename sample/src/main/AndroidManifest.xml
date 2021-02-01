@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Property of Akurateco (https://akurateco.com).
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.akurateco.sample"
+    tools:ignore="LockedOrientationActivity">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".app.AkuratecoApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AkuratecoAndroidSDK"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <!--Akurateco SDK-->
+        <meta-data
+            android:name="com.akurateco.sdk.CLIENT_KEY"
+            android:value="481305b8-2fd4-11eb-a102-4a8510033d01" />
+        <meta-data
+            android:name="com.akurateco.sdk.CLIENT_PASS"
+            android:value="7ccfbb194e7646a30a18d74422d40e7d" />
+        <meta-data
+            android:name="com.akurateco.sdk.PAYMENT_URL"
+            android:value="https://api.rafinita.com/post" />
+
+        <activity
+            android:name=".ui.AkuratecoMainAcitivty"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.AkuratecoSaleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AkuratecoRecurringSaleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AkuratecoCaptureActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AkuratecoCreditvoidActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AkuratecoGetTransStatusActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AkuratecoGetTransDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AkuratecoRedirect3dsActivity"
+            android:screenOrientation="portrait" />
+    </application>
+</manifest>

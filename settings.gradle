@@ -1,0 +1,4 @@
+include ':akurateco'
+include ':sample'
+
+rootProject.name = "Akurateco SDK"

@@ -1,0 +1,14 @@
+<!--
+  ~ Property of Akurateco (https://akurateco.com).
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.AkuratecoAndroidSDK" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorSecondary">@color/orange</item>
+        <item name="colorPrimaryDark">@color/orange</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/orange</item>
+    </style>
+</resources>
