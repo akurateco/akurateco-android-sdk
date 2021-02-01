@@ -1,4 +1,4 @@
-TODO: badge here | [View SDK Wiki](https://github.com/akurateco/akurateco-android-sdk/wiki) | [Report new issue](https://github.com/akurateco/akurateco-android-sdk/issues/new)
+![](https://jitpack.io/v/akurateco/akurateco-android-sdk.svg) | [View SDK Wiki](https://github.com/akurateco/akurateco-android-sdk/wiki) | [Report new issue](https://github.com/akurateco/akurateco-android-sdk/issues/new)
 
 # Akurateco Android SDK
 
@@ -31,8 +31,9 @@ Add to the root build.gradle:
 ```groovy
 allprojects {
     repositories {
+        ...
         jcenter()
-        maven { url "https://jitpack.io" }
+        maven { url 'https://jitpack.io' }
     }
 }
 ```
@@ -40,8 +41,12 @@ allprojects {
 Add to the package build.gradle:
 
 ```groovy
-TODO: implementation {latest-version}
+dependencies {
+    implementation 'com.github.akurateco:akurateco-android-sdk:{latest-version}'
+}
 ```
+
+Latest version is: ![](https://jitpack.io/v/akurateco/akurateco-android-sdk.svg) 
 
 Also, it is possible to download the latest artifact from the [releases page](https://github.com/akurateco/akurateco-android-sdk/releases).
 
