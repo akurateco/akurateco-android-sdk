@@ -22,7 +22,7 @@ The main aspects of the Akurateco Android SDK:
 - Sample Application
 
 To properly set up the SDK, read [Wiki](https://github.com/akurateco/akurateco-android-sdk/wiki) first.
-To get used to the SDK, download a [sample app](TODO).
+To get used to the SDK, download a [sample app](https://github.com/akurateco/akurateco-android-sdk/tree/main/sample).
 
 ## Setup
 
@@ -47,9 +47,13 @@ Also, it is possible to download the latest artifact from the [releases page](ht
 
 ## Sample
 
-| Sale | Recurring Sale | Capture | Creditvoid | Get Trans Status | Get Trans Details |
-|-|-|-|-|-|-|
-| ![](/media/sale.gif) | ![](/media/recurring-sale.gif) | ![](/media/capture.gif) | ![](/media/creditvoid.gif) | ![](/media/get-trans-status.gif) | ![](/media/get-trans-details.gif) |
+| Sale | Recurring Sale | Capture |
+|-|-|-|
+| ![](/media/sale.gif) | ![](/media/recurring-sale.gif) | ![](/media/capture.gif) |
+
+| Creditvoid | Get Trans Status | Get Trans Details |
+|-|-|-|
+| ![](/media/creditvoid.gif) | ![](/media/get-trans-status.gif) | ![](/media/get-trans-details.gif) |
 
 ## Getting help
 
