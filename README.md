@@ -5,7 +5,7 @@
 Akurateco is a white-label payment software provider. Thanks to our 15+ years of experience in the payment industry, we’ve developed a state-of-the-art white-label payment system that ensures smooth and uninterrupted payment flow for merchants across industries.
 
 <p align="center">
-  <a href="https://platon.ua">
+  <a href="https://akurateco.com">
       <img src="/media/header.jpg" alt="Akurateco" width="400px"/>
   </a>
 </p>
