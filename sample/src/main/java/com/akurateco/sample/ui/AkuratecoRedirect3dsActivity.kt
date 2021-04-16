@@ -4,6 +4,7 @@
 
 package com.akurateco.sample.ui
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -22,20 +23,27 @@ class AkuratecoRedirect3dsActivity : AppCompatActivity(R.layout.activity_redirec
 
     private lateinit var binding: ActivityRedirect3dsBinding
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityRedirect3dsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val termUrl = intent.getStringExtra(TERM_URL_KEY)
         val termUrl3ds = intent.getStringExtra(TERM_URL_3DS_KEY)
+        val redirectUrl = intent.getStringExtra(REDIRECT_URL_KEY)
+        val redirectParams = intent.getStringExtra(REDIRECT_PARAMS_KEY)
 
         binding.webView.apply {
             settings.defaultTextEncodingName = "utf-8"
 
             webViewClient = object : WebViewClient() {
                 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-                override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+                override fun shouldOverrideUrlLoading(
+                    view: WebView?,
+                    request: WebResourceRequest?
+                ): Boolean {
                     if (handleTermUrl3ds(request?.url?.path.orEmpty())) {
                         return false
                     }
@@ -74,27 +82,60 @@ class AkuratecoRedirect3dsActivity : AppCompatActivity(R.layout.activity_redirec
             }
 
             binding.progressBar.show()
-            loadUrl(intent.getStringExtra(TERM_URL_KEY).orEmpty())
+
+            /* Enable Javascript in Webview */
+
+            getSettings().setJavaScriptEnabled(true);
+
+            /* Create HTML document with needed redirect values and put them to Webview */
+            /* The form is completely invisible and submits data on its own */
+
+            val htmlData = java.lang.StringBuilder("<html>")
+            htmlData.append("<head><title></title></head>");
+            htmlData.append("<body>");
+            htmlData.append(
+                "<form method='POST' action='$redirectUrl'>" +
+                        "<input type='hidden' name='TermUrl' value='$termUrl'>" +
+                        "<input type='hidden' name='PaReq' value='$redirectParams'>" +
+                        "<input style='display:none;' id='send' type='submit' value='send'>" +
+                        "</form>"
+            );
+            htmlData.append("<script>document.addEventListener('DOMContentLoaded', document.getElementById('send').click());</script>")
+            htmlData.append("</body>")
+            htmlData.append("</html>");
+
+            loadData(htmlData.toString(), "text/html", "ISO 8859-1");
         }
     }
 
     companion object {
 
         private const val TERM_URL_KEY = "TERM_URL_KEY"
+        private const val REDIRECT_URL_KEY = "REDIRECT_URL_KEY"
+        private const val REDIRECT_PARAMS_KEY = "REDIRECT_PARAMS_KEY"
         private const val TERM_URL_3DS_KEY = "TERM_URL_3DS_KEY"
 
         private const val REQUEST_CODE = 100
 
-        fun open(context: Activity, termUrl: String, termUrl3ds: String) {
+        fun open(
+            context: Activity,
+            termUrl: String,
+            redirectUrl: String,
+            redirectParams: String,
+            termUrl3ds: String
+        ) {
             context.startActivityForResult(
                 Intent(context, AkuratecoRedirect3dsActivity::class.java).apply {
                     putExtra(TERM_URL_KEY, termUrl)
-                    putExtra(TERM_URL_3DS_KEY, termUrl3ds)
+                    putExtra(REDIRECT_URL_KEY, redirectUrl)
+                    putExtra(REDIRECT_PARAMS_KEY, redirectParams)
+                    putExtra(TERM_URL_3DS_KEY, termUrl3ds);
                 },
                 REQUEST_CODE
             )
         }
 
-        fun isOk(requestCode: Int, resultCode: Int) = requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK
+        fun isOk(requestCode: Int, resultCode: Int) =
+            requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK
     }
 }
