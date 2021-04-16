@@ -95,7 +95,9 @@ class AkuratecoSaleActivity : AppCompatActivity(R.layout.activity_sale) {
         binding.etxtPayerEmail.setText(Faker.Internet.email())
         binding.etxtPayerPhone.setText(Faker.Phone.phoneWithAreaCode())
         binding.etxtPayerIpAddress.setText(
-            "${random.nextInt(256)}.${random.nextInt(256)}.${random.nextInt(256)}.${random.nextInt(256)}"
+            "${random.nextInt(256)}.${random.nextInt(256)}.${random.nextInt(256)}.${random.nextInt(
+                256
+            )}"
         )
 
         binding.rgCard.check(binding.rgCard.children.toList().random().id)
@@ -210,6 +212,8 @@ class AkuratecoSaleActivity : AppCompatActivity(R.layout.activity_sale) {
                         AkuratecoRedirect3dsActivity.open(
                             this@AkuratecoSaleActivity,
                             result.result.redirectParams.termUrl,
+                            result.result.redirectUrl,
+                            result.result.redirectParams.paymentRequisites,
                             termUrl3ds
                         )
                     }
