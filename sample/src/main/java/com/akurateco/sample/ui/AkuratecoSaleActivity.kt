@@ -82,7 +82,7 @@ class AkuratecoSaleActivity : AppCompatActivity(R.layout.activity_sale) {
 
     private fun randomize(isAll: Boolean) {
         binding.etxtOrderId.setText(UUID.randomUUID().toString())
-        binding.etxtOrderAmount.setText(DecimalFormat("#.##").format(random.nextDouble() * 10_000))
+        binding.etxtOrderAmount.setText(DecimalFormat("#.##").format(random.nextDouble() * 10_000).replace(",", "."))
         binding.etxtOrderDescription.setText(Faker.Lorem.sentences())
         binding.etxtOrderCurrencyCode.setText(if (random.nextBoolean()) "UAH" else "USD")
 
