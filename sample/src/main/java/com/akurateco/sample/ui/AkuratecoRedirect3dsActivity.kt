@@ -6,11 +6,12 @@ package com.akurateco.sample.ui
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.net.http.SslError
 import android.os.Build
 import android.os.Bundle
+import android.webkit.SslErrorHandler
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -78,6 +79,21 @@ class AkuratecoRedirect3dsActivity : AppCompatActivity(R.layout.activity_redirec
                 override fun onPageFinished(view: WebView?, url: String?) {
                     binding.progressBar.hide()
                     super.onPageFinished(view, url)
+
+                    loadUrl("javascript:var formUrl = document.getElementById('myForm').action='${redirectUrl.toString()}'");
+                    loadUrl("javascript:var termUrl = document.getElementById('termUrl').value='${termUrl.toString()}'")
+                    loadUrl("javascript:var PaReq = document.getElementById('PaReq').value='${redirectParams.toString()}'");
+                    loadUrl("javascript:document.getElementById('myForm').submit()");
+
+                    setWebViewClient(object : WebViewClient() {
+                        override fun onReceivedSslError(
+                            v: WebView,
+                            handler: SslErrorHandler,
+                            er: SslError
+                        ) {
+                            handler.proceed()
+                        }
+                    })
                 }
             }
 
@@ -85,26 +101,9 @@ class AkuratecoRedirect3dsActivity : AppCompatActivity(R.layout.activity_redirec
 
             /* Enable Javascript in Webview */
 
-            getSettings().setJavaScriptEnabled(true);
+            settings.javaScriptEnabled = true
 
-            /* Create HTML document with needed redirect values and put them to Webview */
-            /* The form is completely invisible and submits data on its own */
-
-            val htmlData = java.lang.StringBuilder("<html>")
-            htmlData.append("<head><title></title></head>");
-            htmlData.append("<body>");
-            htmlData.append(
-                "<form method='POST' action='$redirectUrl'>" +
-                        "<input type='hidden' name='TermUrl' value='$termUrl'>" +
-                        "<input type='hidden' name='PaReq' value='$redirectParams'>" +
-                        "<input style='display:none;' id='send' type='submit' value='send'>" +
-                        "</form>"
-            );
-            htmlData.append("<script>document.addEventListener('DOMContentLoaded', document.getElementById('send').click());</script>")
-            htmlData.append("</body>")
-            htmlData.append("</html>");
-
-            loadData(htmlData.toString(), "text/html", "ISO 8859-1");
+            loadUrl("file:///android_asset/index.html");
         }
     }
 
